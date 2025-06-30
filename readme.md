@@ -12,6 +12,15 @@ This assignment demonstrates the use of Python, unit testing, code coverage, Doc
 
 
 
+## QR Code Creation Screenshot
+![QR Code Created](screenshorts/Screenshot_QR_code_Created.png)  
+[This screenshot shows successful QR code creation inside Docker with volume mount.]
+
+## GitHub Actions Workflow Screenshot
+![GitHub Actions Workflow](screenshorts/Screenshot_GitHub_Actions_Workflow.png)  
+[This screenshot shows the passing CI pipeline with 100% test coverage.]
+
+
 ## 🔧 Features
 
 - Generates a QR code for any valid URL

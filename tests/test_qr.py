@@ -51,9 +51,16 @@ def test_create_directory_failure(monkeypatch, tmp_path):
 
 
 def test_module_entry_point(monkeypatch, tmp_path):
+    """
+    Execute `python -m app.qr` so the __main__ guard runs
+    without argparse choking on pytest args.
+    """
     monkeypatch.setattr(Path, "cwd", lambda: tmp_path)
-    sys.modules.pop("app.qr", None)  # force re-import cleanly
+    monkeypatch.setattr(sys, "argv", ["app.qr", "--url", "https://example.com"])
+    sys.modules.pop("app.qr", None)
+
     runpy.run_module("app.qr", run_name="__main__")
 
     generated = list((tmp_path / qr.QR_DIRECTORY).glob("QRCode_*.png"))
     assert generated and generated[0].stat().st_size > 0
+
